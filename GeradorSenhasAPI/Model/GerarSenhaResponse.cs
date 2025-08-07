@@ -2,5 +2,5 @@
 
 public class GerarSenhaResponse
 {
-    public int Senha { get; set; }
+    public string Senha { get; set; }
 }

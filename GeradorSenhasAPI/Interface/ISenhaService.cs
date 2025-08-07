@@ -14,5 +14,5 @@ public interface ISenhaService
     
     string TransformarEmString(char[] senha);
 
-    string GerarSenha(GerarSenhaRequest senhaRequest);
+    string GerarSenha();
 }

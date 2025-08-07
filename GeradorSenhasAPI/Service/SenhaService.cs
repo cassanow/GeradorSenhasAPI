@@ -6,17 +6,18 @@ namespace GeradorSenhasAPI.Service;
 
 public class SenhaService : ISenhaService
 {
-   public string GerarSenha(GerarSenhaRequest senhaRequest)
+   public string GerarSenha()
    {
       Random random = new Random();
-      var tamanhoSenha = random.Next(10, 20);
+      var tamanhoSenha = random.Next(10,20);
+      int contador = 0;
+      int indice = 0;
       char[] senha = new char[tamanhoSenha];
       
-      while (senhaRequest.Tamanho != tamanhoSenha)
+      while (contador < tamanhoSenha)
       {
-            senhaRequest.Tamanho++;
+            contador++;
             var sorteio = random.Next(1,4);
-            var indice = 0;
 
             if (sorteio == 1)
             {
@@ -37,6 +38,9 @@ public class SenhaService : ISenhaService
             {
                senha[indice] = CaracteresMinusculas();
             }
+            
+            indice++;
+            
       }
 
       return TransformarEmString(senha);
@@ -45,7 +49,7 @@ public class SenhaService : ISenhaService
    public char CaracteresEspeciais()
    {
       Random random = new Random();
-      var caracteresEspeciais = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*', ' ' };
+      var caracteresEspeciais = new List<char> { '!', '@', '#', '$', '%', '^', '&', '*'};
 
       int indice = random.Next(caracteresEspeciais.Count);
 
@@ -110,6 +114,7 @@ public class SenhaService : ISenhaService
       }
       
       var senhaFinal = resultado.ToString();
+      
 
       return senhaFinal;
    }
